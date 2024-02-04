@@ -11,10 +11,13 @@
 
   --white: #fff;
   --white-op-15: rgba(255, 255, 255, 0.15);
+  --white-op-40: rgba(255, 255, 255, 0.4);
 
   --gray-200: #c4c4c4;
+  --gray-200-op-20: rgba(196, 196, 196, 0.2);
   --gray-300: #b4b4b4;
   --gray-400: #999999;
+  --gray-400-op-20: rgba(153, 153, 153, 0.5);
   --gray-500: #535353;
   --gray-600: #2c2c2c;
   --gray-700: #282828;
@@ -30,10 +33,12 @@ button {
 
 body {
   font-size: 1.6rem;
+  overflow: hidden;
 }
 
 #page {
   min-height: 100vh;
+  max-width: 100vw;
   display: grid;
 
   grid-template-areas:
@@ -73,7 +78,8 @@ nav ul a:hover > li,
 }
 
 nav ul .selected {
-  background-color: var(--gray-700);
+  border-radius: 0.4rem;
+  background-color: var(--white-op-15);
 }
 nav ul .selected li {
   color: var(--white);
@@ -124,12 +130,203 @@ nav ul li,
 
 /* main */
 main {
-  background-color: var(--gray-800);
+  max-height: calc(100vh - 9.1rem);
   grid-area: main;
 
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-header {
+  width: 100%;
+  padding: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--gray-800);
+}
+
+.main-header .back {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray-200-op-20);
+
+  cursor: pointer;
+}
+
+.back img {
+  transform: translate(-10%);
+}
+
+.main-header .back:hover {
+  box-shadow: 0 0 0.4rem 0.1rem var(--white-op-40);
+}
+
+.main-header .avatar-img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  overflow: hidden;
+
+  border: 1px solid var(--gray-700);
+  cursor: pointer;
+}
+
+.avatar-img img {
+  width: 100%;
+}
+
+.main-body {
+  overflow-y: scroll;
+}
+
+/* Scroll bar main content */
+.main-body::-webkit-scrollbar {
+  background-color: var(--gray-800);
+}
+.main-body::-webkit-scrollbar-thumb {
+  height: 5rem;
+  width: 0.8rem;
+  background-color: var(--gray-400-op-20);
+}
+
+.main-recently-heard {
+  padding: 1.6rem;
+  background-color: var(--gray-800);
+}
+
+.main-recently-heard h2 {
   color: var(--white);
+  font-size: 3.2rem;
+  font-weight: bold;
+}
+
+.main-recently-heard .recently-heard {
+  margin-top: 1.6rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.6rem;
+}
+
+.horizontal-card {
+  display: flex;
+
+  border-radius: 0.4rem;
+  overflow: hidden;
+
+  cursor: pointer;
+}
+.horizontal-card:hover {
+  transform: scale(1.02);
+}
+
+.horizontal-card-img {
+  height: 8rem;
+}
+.horizontal-card-img img {
+  height: 100%;
+}
+
+.horizontal-card-title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  background-color: var(--white-op-15);
+
+  padding-left: 1.6rem;
+}
+
+.horizontal-card-title p {
+  color: var(--white);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+/* MAIN SECTION */
+.main-section {
+  background-color: var(--gray-900);
+  padding: 4rem 1.6rem 3rem;
+}
+
+.main-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main-section-header h2 {
+  color: var(--white);
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+.main-section-header p {
+  color: var(--gray-400);
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.main-section-header a {
+  color: var(--gray-400);
+  font-size: 1.6rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.main-section-header a:hover {
+  color: var(--gray-200);
+}
+
+/* CARD */
+.cards {
+  margin-top: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  /* gap: 2.4rem; */
+}
+
+.card {
+  width: 25.6rem;
+  background-color: var(--gray-800);
+  border-radius: 0.4rem;
+  padding: 1.6rem 1.6rem 1.2rem;
+
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card-img {
+  width: 100%;
+  border-radius: 0.4rem;
+
+  overflow: hidden;
+}
+
+.card-img img {
+  width: 100%;
+}
+
+.card-description {
+  margin-top: 1.8rem;
+}
+.card-description h3 {
+  color: var(--white);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.card-description p {
+  color: var(--gray-400);
+  font-size: 1.4rem;
+  font-weight: 400;
 }
 
 /* footer */
